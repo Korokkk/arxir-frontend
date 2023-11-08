@@ -3,21 +3,20 @@ import {
   useState,
 } from 'react';
 
-import SidebarLeft from '../components/sidebar-left';
+import SidebarRight from '../components/SidebarRight';
 import '../styles/home.css';
 import Logo from '../assets/logo.jpg';
 import SendGray from '../assets/send-gray.jpg';
 import SendBlack from '../assets/send-black.jpg';
 
-
-const Home = () => {
+const HomePage = () => {
   const [inputIsEmpty, setInputIsEmpty] = useState(true);
   const [inputMessage, setInputMessage] = useState('');
 
-  const [sidebarLeftIsOpen, setSidebarLeftIsOpen] = useState(false);
+  const [sidebarRightIsOpen, setSidebarRightIsOpen] = useState(false);
 
-  const handleSidebarLeftButton = () => {
-    setSidebarLeftIsOpen(!sidebarLeftIsOpen);
+  const handleSidebarRightButton = () => {
+    setSidebarRightIsOpen(!sidebarRightIsOpen);
   }
 
   const handleInputChange = (str) => {
@@ -28,34 +27,28 @@ const Home = () => {
   const handleInputKeyPress = (event) => {
     if (event.key === 'Enter' && !inputIsEmpty) {
       sendButtonClick();
+      setSidebarRightIsOpen(true);
     }
   }
 
   const sendButtonClick = () => {
-    if (!inputIsEmpty) {
-      alert(inputMessage);
-    }
+    alert('got it!')
   }
+
   return (
-    <>
-      {sidebarLeftIsOpen && <SidebarLeft />}
+    <div className='page'>
       <div className='container'>
-        <div className='header'>
-          <button className='sidebar-left-button' 
-            onClick={handleSidebarLeftButton}
-          >
-          </button>
-          <div className='header-left'>
-            <button className='button-header'>Accessibility</button>
-            <button className='button-header'>Help / About Us</button>
-            <button className='button-header' style={{ fontWeight: 'bold' }}>Login / Register</button>
-          </div>
+        <div className='navbar-home'>
+          <button className='button-navbar-home'>Accessibility</button>
+          <button className='button-navbar-home'>Help / About Us</button>
+          <button className='button-navbar-home' style={{ fontWeight: 'bold' }}>Login / Register</button>
         </div>
 
-        <div className='content'>
+        <div className='content-home'>
           <p>Home</p>
           <img src={Logo} alt='logo' style={{ width: '50%', height: '50%' }}/>
         </div>
+
         <div className='footer'>
           <div className='input-container'>
             <input
@@ -79,8 +72,9 @@ const Home = () => {
           <div>I don't know anything.</div>
         </div>
       </div>
-    </>
+      {sidebarRightIsOpen && <SidebarRight />}
+    </div>
   )
 }
 
-export default Home;
+export default HomePage;

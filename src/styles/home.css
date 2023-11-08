@@ -1,12 +1,24 @@
-.container {
+.page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+}
+/* left history button on the left */
+.sidebar-left {
+  width: 300px;
+  height: 100%;
+  background-color: #f1f1f1;
+  position: fixed;
+  top: 0;
+  left: -300px; /* 将其隐藏在屏幕左侧 */
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.container {
   min-height: 100vh;
 }
 
-.header {
+.navbar-home {
   /* background-color: #333; */
   color: #fff;
   padding: 30px;
@@ -16,15 +28,15 @@
   width: 100%;
   
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
-.content {
-  padding: 20px;
+.content-home {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensure the content takes the full viewport height */
 }
 
 .footer {
@@ -46,7 +58,7 @@
 }
 
 /* ----- header contents ----- */
-.button-header {
+.button-navbar-home {
   background: none;
   border: none;
   padding: 0;
@@ -56,12 +68,13 @@
   color: #000;
 }
 
-.button-header:hover {
+.button-navbar-home:hover {
   color: white;
   background-color: black;
 }
 
-.sidebar-left-button {
+/* left history button in header */
+.sidebar-nav-button {
   background: none; /* 去除按钮的默认背景颜色 */
   box-shadow: none; /* 去除按钮的默认阴影 */
   border: none; /* 去除按钮的默认边框 */
